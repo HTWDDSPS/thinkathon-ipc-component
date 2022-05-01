@@ -9,9 +9,8 @@ ComponentConfiguration:
     accessControl:
       aws.greengrass.ipc.mqttproxy:
         com.example.IPCComponent:mqttproxy:1:
-          policyDescription: Allows access to publish to all topics.
+          policyDescription: Allows access to subscribe to all topics.
           operations:
-            - aws.greengrass#PublishToIoTCore
             - aws.greengrass#SubscribeToIoTCore
           resources:
             - "*"
@@ -25,12 +24,9 @@ Manifests:
       Install:
         RequiresPrivilege: true
         script: |-
-          python3 -m venv opcua
-          . ./opcua/bin/activate
-          pip install awsiotsdk
+          python3 -m pip install awsiotsdk
       Run: 
         RequiresPrivilege: true
         script: |-          
-          . ./opcua/bin/activate          
           python3 -u {artifacts:decompressedPath}/greengrass-helloworld/main.py {configuration:/Message}
       
