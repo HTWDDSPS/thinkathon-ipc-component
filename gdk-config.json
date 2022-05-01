@@ -1,0 +1,16 @@
+{
+  "component": {
+    "com.example.IPCComponent": {
+      "author": "Eric",
+      "version": "NEXT_PATCH",
+      "build": {
+        "build_system": "zip"
+      },
+      "publish": {
+        "bucket": "thinkathon-s3-htwdd-components",
+        "region": "eu-central-1"
+      }
+    }
+  },
+  "gdk_version": "1.0.0"
+}
