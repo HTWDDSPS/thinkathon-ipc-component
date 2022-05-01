@@ -12,6 +12,7 @@ ComponentConfiguration:
           policyDescription: Allows access to subscribe to all topics.
           operations:
             - aws.greengrass#SubscribeToIoTCore
+            - aws.greengrass#PublishToIoTCore
           resources:
             - "*"
 Manifests:
