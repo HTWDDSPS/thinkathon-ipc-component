@@ -10,6 +10,12 @@ from awsiot.greengrasscoreipc.model import (
     PublishToIoTCoreRequest
 )
 
+from greengrasssdk.stream_manager import (
+    StreamManagerClient,
+    ReadMessagesOptions,
+    StreamManagerException
+)
+
 TIMEOUT = 10
 
 ipc_client = awsiot.greengrasscoreipc.connect()
@@ -22,6 +28,7 @@ class StreamHandler(client.SubscribeToIoTCoreStreamHandler):
         try:
             message = str(event.message.payload, "utf-8")
             topic_name = event.message.topic_name
+            print(message)
             # Handle message.
             topic = "my/response"
             message = "Hello, World"
@@ -58,10 +65,14 @@ operation = ipc_client.new_subscribe_to_iot_core(handler)
 future = operation.activate(request)
 print("subscribed")
 
+
+
+
 print("result wait")
 # Keep the main thread alive, or the process will exit.
 while True:
     time.sleep(10)
+    
                   
 # To stop subscribing, close the operation stream.
 operation.close()
