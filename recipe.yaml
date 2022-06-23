@@ -2,7 +2,7 @@
 RecipeFormatVersion: "2020-01-25"
 ComponentName: "{COMPONENT_NAME}"
 ComponentVersion: "{COMPONENT_VERSION}"
-ComponentDescription: "This is simple Hello World component written in Python."
+ComponentDescription: "Component for first class edge level communication"
 ComponentPublisher: "{COMPONENT_AUTHOR}"
 ComponentConfiguration:
   DefaultConfiguration:
@@ -12,6 +12,7 @@ ComponentConfiguration:
           policyDescription: Allows access to subscribe to all topics.
           operations:
             - aws.greengrass#SubscribeToIoTCore
+            - aws.greengrass#PublishToIoTCore
           resources:
             - "*"
 Manifests:
@@ -25,6 +26,8 @@ Manifests:
         RequiresPrivilege: true
         script: |-
           python3 -m pip install awsiotsdk
+          python3 -m pip install greengrasssdk
+          python3 -m pip install asyncua
       Run: 
         RequiresPrivilege: true
         script: |-          
