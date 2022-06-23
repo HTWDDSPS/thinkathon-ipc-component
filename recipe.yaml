@@ -27,6 +27,7 @@ Manifests:
         script: |-
           python3 -m pip install awsiotsdk
           python3 -m pip install greengrasssdk
+          python3 -m pip install asyncua
       Run: 
         RequiresPrivilege: true
         script: |-          
